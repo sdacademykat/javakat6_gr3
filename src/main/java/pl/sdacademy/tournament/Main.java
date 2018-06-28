@@ -2,6 +2,7 @@ package pl.sdacademy.tournament;
 
 import pl.sdacademy.tournament.group.Group;
 import pl.sdacademy.tournament.group.GroupPhase;
+import pl.sdacademy.tournament.match.Match;
 import pl.sdacademy.tournament.team.Person;
 import pl.sdacademy.tournament.team.Team;
 
@@ -46,12 +47,14 @@ public class Main {
         GroupPhase groupPhase = new GroupPhase(Arrays.asList(group));
 
         System.out.println(group);
-        while(!groupPhase.isFinished()) {
+        while (!groupPhase.isFinished()) {
             groupPhase.generateNextRoundMatches();
             System.out.println(group);
             group.getMatches(groupPhase.getCurrentRound())
                     .forEach(System.out::println);
             System.out.println('\n');
+            groupPhase.addData(new Match(poland, brazil));
+            groupPhase.addData(new Match(brazil, poland));
         }
     }
 }

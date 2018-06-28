@@ -12,6 +12,8 @@ public class GroupPhase implements TournamentPhase {
     private boolean finished;
     private int currentRound;
 
+    int counter = 0;
+
     public GroupPhase(List<Group> groups) {
         this.groups = groups;
     }
@@ -24,6 +26,7 @@ public class GroupPhase implements TournamentPhase {
         return currentRound;
     }
 
+    @Override
     public void generateNextRoundMatches() {
         currentRound++;
         groups.forEach(this::generateNextRoundMatches);
@@ -31,7 +34,12 @@ public class GroupPhase implements TournamentPhase {
 
     @Override
     public void addData(Match match) {
-        
+        Group group = groups.stream()
+                .filter(g -> g.getTeams().contains(match.getTeam1()) && g.getTeams().contains(match.getTeam2()))
+                .findFirst()
+                .get();
+
+        group.addMatch(match);
     }
 
     private void generateNextRoundMatches(Group group) {
