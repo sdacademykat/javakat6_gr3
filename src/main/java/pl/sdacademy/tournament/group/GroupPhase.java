@@ -29,6 +29,11 @@ public class GroupPhase implements TournamentPhase {
         groups.forEach(this::generateNextRoundMatches);
     }
 
+    @Override
+    public void addData(Match match) {
+        
+    }
+
     private void generateNextRoundMatches(Group group) {
         Team team1;
         Team team2;
