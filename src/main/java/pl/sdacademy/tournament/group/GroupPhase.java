@@ -12,8 +12,6 @@ public class GroupPhase implements TournamentPhase {
     private boolean finished;
     private int currentRound;
 
-    int counter = 0;
-
     public GroupPhase(List<Group> groups) {
         this.groups = groups;
     }
