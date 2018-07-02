@@ -20,6 +20,14 @@ public class Group {
         this.matchesByRound = new HashMap<>();
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public void setTeams(List<Team> teams) {
+        this.teams = teams;
+    }
+
     public String getName() {
         return name;
     }
